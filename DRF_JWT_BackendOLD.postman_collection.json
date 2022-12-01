@@ -1,9 +1,8 @@
 {
 	"info": {
-		"_postman_id": "127898f3-be6e-409d-a477-d78e6b8ba69b",
+		"_postman_id": "d4409d57-7119-4339-bfae-1f3a18bc6341",
 		"name": "DRF_JWT_Backend",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "23291410"
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
 		{
@@ -50,7 +49,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"username\": \"testuser1\",\r\n    \"password\": \"password1@\"\r\n}",
+							"raw": "{\r\n    \"username\": \"dantheman\",\r\n    \"password\": \"password1@\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -217,78 +216,6 @@
 							"path": [
 								"api",
 								"cars",
-								""
-							]
-						}
-					},
-					"response": []
-				}
-			]
-		},
-		{
-			"name": "Comment",
-			"item": [
-				{
-					"name": "GET all comments from video_id",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "http://127.0.0.1:8000/api/comment/KSMVflSBKx8",
-							"protocol": "http",
-							"host": [
-								"127",
-								"0",
-								"0",
-								"1"
-							],
-							"port": "8000",
-							"path": [
-								"api",
-								"comment",
-								"KSMVflSBKx8"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "POST new comment for user (Protected)",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjcwNzg3NzUwLCJpYXQiOjE2Njk5MjM3NTAsImp0aSI6IjYxNjk4MDJhOTc2NTQyM2ViODhlYjExODliYzEwYmUzIiwidXNlcl9pZCI6MiwidXNlcm5hbWUiOiJ0ZXN0dXNlcjEiLCJmaXJzdF9uYW1lIjoiIn0.JhaOgcMih9JUtmCsejC83-OsYDTkrybjx17hIN8dpGA",
-									"type": "string"
-								}
-							]
-						},
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"video_id\": \"KSMVflSBKx8\",\r\n    \"text\": \"twaaaang twaaang twaaaaang twaaaaaaaaaang\",\r\n    \"likes\": 0,\r\n    \"dislikes\": 0\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "http://127.0.0.1:8000/api/comment/",
-							"protocol": "http",
-							"host": [
-								"127",
-								"0",
-								"0",
-								"1"
-							],
-							"port": "8000",
-							"path": [
-								"api",
-								"comment",
 								""
 							]
 						}
