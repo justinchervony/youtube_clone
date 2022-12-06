@@ -4,7 +4,7 @@ import useAuth from "../../hooks/useAuth";
 
 import axios from "axios";
 
-const MainPage = () => {
+const VideoPage = () => {
     const [user, token] = useAuth();
     const [comments, setComments] = useState([]);
     const [searchSelection, setSearchSelection] = useState('KSMVflSBKx8');
@@ -46,4 +46,4 @@ const MainPage = () => {
 
 }
 
-export default MainPage;
+export default VideoPage;

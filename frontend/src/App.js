@@ -6,7 +6,7 @@ import "./App.css";
 import HomePage from "./pages/HomePage/HomePage";
 import LoginPage from "./pages/LoginPage/LoginPage";
 import RegisterPage from "./pages/RegisterPage/RegisterPage";
-import MainPage from "./pages/MainPage/MainPage";
+import VideoPage from "./pages/VideoPage/VideoPage";
 
 // Component Imports
 import Navbar from "./components/NavBar/NavBar";
@@ -17,14 +17,14 @@ import PrivateRoute from "./utils/PrivateRoute";
 import { useEffect, useState } from "react";
 
 function App() {
-  const [searchSelection, setSearchSelection] = useState('');
 
   return (
     <div>
       <Navbar />
       <Routes>
+        <Route path="/" element={<SearchPage />} />
         <Route
-          path="/"
+          path="/home"
           element={
             <PrivateRoute>
               <HomePage />
@@ -33,7 +33,7 @@ function App() {
         />
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/login" element={<LoginPage />} />
-        <Route path="/main" element={<MainPage videoId={searchSelection} setVideoId={setSearchSelection}/>} />
+        <Route path="/video" element={<VideoPage />} />
       </Routes>
       <Footer />
     </div>
