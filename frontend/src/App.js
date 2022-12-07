@@ -1,6 +1,7 @@
 // General Imports
 import { Routes, Route } from "react-router-dom";
 import "./App.css";
+import { KEY } from "./localKey";
 
 // Pages Imports
 import HomePage from "./pages/HomePage/HomePage";
@@ -23,7 +24,7 @@ function App() {
     <div>
       <Navbar />
       <Routes>
-        <Route path="/" element={<SearchPage />} />
+        <Route path="/" element={<SearchPage userKey={KEY}/>} />
         <Route
           path="/home"
           element={

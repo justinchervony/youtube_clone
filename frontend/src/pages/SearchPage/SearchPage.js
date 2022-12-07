@@ -3,13 +3,13 @@ import { useEffect, useState } from "react";
 
 import axios from "axios";
 
-const SearchPage = () => {
+const SearchPage = (props) => {
     const [userInput, setUserInput] = useState('');
     const [videoResults, setVideoResults] = useState([])
 
     async function handleSearch(event){
         event.preventDefault();
-        const response = await axios.get(`https://youtube.googleapis.com/youtube/v3/search?part=snippet&q=${userInput}&key=AIzaSyBFWg6hzRljtXAs1hTaKDRfMUlD5F8JOmg`)
+        const response = await axios.get(`https://youtube.googleapis.com/youtube/v3/search?part=snippet&q=${userInput}&key=${props.userKey}`)
         console.log(response.data.items);
         setVideoResults(response.data.items);
     }
@@ -25,7 +25,7 @@ const SearchPage = () => {
                 {videoResults.map((video) => {
                     return (
                         <ul>
-                            <img src={`${video.snippet.thumbnails.default}`}></img>
+                            <img src={`${video.snippet.thumbnails.default.url}`}></img>
                         </ul>
                     );
                 })}
