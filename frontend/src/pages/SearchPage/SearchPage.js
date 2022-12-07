@@ -15,14 +15,10 @@ const SearchPage = (props) => {
         console.log(response.data.items);
         setVideoResults(response.data.items);
     }
-    // https://youtube.googleapis.com/youtube/v3/search?q=${userInput}part=snippet.thumbnails&key=[YOUR_API_KEY]
 
     const handleClick = (video) => {
         navigate(`/video/${video.id.videoId}`);
     };
-
-
-    
 
     return (
         <div>
@@ -33,10 +29,13 @@ const SearchPage = (props) => {
             <div className="videoResultsDisplay">
                 {videoResults.map((video) => {
                     return (
-                        <ul>
-                            <img src={`${video.snippet.thumbnails.default.url}`} onClick={() => handleClick(video)}></img>
-                            {/* <Link to={`/video/${video.id.videoId}`}>{video.id}</Link> */}
-                        </ul>
+                        <div className="searchResults">
+                            <ul>
+                                <img src={`${video.snippet.thumbnails.default.url}`} onClick={() => handleClick(video)}></img>
+                            </ul>
+                            <p>{`${video.snippet.title}`}</p>
+                            <br></br>
+                        </div>
                     );
                 })}
             </div>
@@ -45,7 +44,3 @@ const SearchPage = (props) => {
 }
 
 export default SearchPage;
-
-                            {/* <iframe id="ytplayer" type="text/html" width="320" height="180"
-                            src={`https://www.youtube.com/embed/${video.id.videoId}`}
-                            frameBorder="0"></iframe> */}

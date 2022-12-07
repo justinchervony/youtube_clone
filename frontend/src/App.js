@@ -35,7 +35,7 @@ function App() {
         />
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/login" element={<LoginPage />} />
-        <Route path="/video/:video_id" element={<VideoPage />} />
+        <Route path="/video/:video_id" element={<VideoPage userKey={KEY}/>} />
       </Routes>
       <Footer />
     </div>
