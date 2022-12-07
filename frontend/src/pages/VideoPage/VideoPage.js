@@ -4,10 +4,10 @@ import useAuth from "../../hooks/useAuth";
 
 import axios from "axios";
 
-const VideoPage = () => {
+const VideoPage = (props) => {
     const [user, token] = useAuth();
     const [comments, setComments] = useState([]);
-    const [searchSelection, setSearchSelection] = useState('KSMVflSBKx8');
+    const [searchSelection, setSearchSelection] = useState(props.searchResults);
     
     async function getFilteredComments(video_id){
         const response = await axios.get(`http://127.0.0.1:8000/api/comment/${video_id}`);
@@ -15,9 +15,12 @@ const VideoPage = () => {
         setComments(response.data);
       }
 
-    useEffect(() => {
-        setSearchSelection('KSMVflSBKx8')
-    }, );
+
+    //   'KSMVflSBKx8'
+    //   'FTQbiNvZqaY'
+    // useEffect(() => {
+    //     setSearchSelection(props.searchResults)
+    // }, []);
 
     useEffect(() => {
         getFilteredComments(searchSelection);
