@@ -2,10 +2,12 @@ import React from "react";
 import { useEffect, useState } from "react";
 
 import axios from "axios";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 
 const SearchPage = (props) => {
     const [userInput, setUserInput] = useState('');
     const [videoResults, setVideoResults] = useState([])
+    const navigate = useNavigate()
 
     async function handleSearch(event){
         event.preventDefault();
@@ -13,7 +15,14 @@ const SearchPage = (props) => {
         console.log(response.data.items);
         setVideoResults(response.data.items);
     }
-    https://youtube.googleapis.com/youtube/v3/search?q=${userInput}part=snippet.thumbnails&key=[YOUR_API_KEY]
+    // https://youtube.googleapis.com/youtube/v3/search?q=${userInput}part=snippet.thumbnails&key=[YOUR_API_KEY]
+
+    const handleClick = (video) => {
+        navigate(`/video/${video.id.videoId}`);
+    };
+
+
+    
 
     return (
         <div>
@@ -25,7 +34,8 @@ const SearchPage = (props) => {
                 {videoResults.map((video) => {
                     return (
                         <ul>
-                            <img src={`${video.snippet.thumbnails.default.url}`}></img>
+                            <img src={`${video.snippet.thumbnails.default.url}`} onClick={() => handleClick(video)}></img>
+                            {/* <Link to={`/video/${video.id.videoId}`}>{video.id}</Link> */}
                         </ul>
                     );
                 })}
