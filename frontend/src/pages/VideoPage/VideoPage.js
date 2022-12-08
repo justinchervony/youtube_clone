@@ -52,6 +52,8 @@ const VideoPage = (props) => {
             }});     
      }
 
+    let revArray = comments.slice().reverse()
+
     return (
         <div className="videoPageContent">
             <div className="videoPageLeft">
@@ -73,7 +75,7 @@ const VideoPage = (props) => {
                     </div>
                     <br></br>
                     <div className="commentSection">
-                        {comments.map((comment) => {
+                        {revArray.map((comment) => {
                             return (
                                 <ul>
                                     <strong>{comment.user.username}: &nbsp;</strong> {comment.text}
