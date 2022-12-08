@@ -7,6 +7,7 @@ import axios from "axios";
 
 const VideoPage = (props) => {
     const [user, token] = useAuth();
+    const [userInput, setUserInput] = useState('');
     const [comments, setComments] = useState([]);
     const [relatedVideos, setRelatedVideos] = useState([]);
     const navigate = useNavigate()
@@ -25,7 +26,6 @@ const VideoPage = (props) => {
         setRelatedVideos(response.data.items);
     }
 
-
     useEffect(() => {
         getFilteredComments(video_id);
     }, [navigate]);
@@ -36,8 +36,20 @@ const VideoPage = (props) => {
 
     const handleClick = (video) => {
         navigate(`/video/${video.id.videoId}`);
-    };
 
+    }
+
+    async function handleSubmit (event) {
+            const response = await axios.post("http://127.0.0.1:8000/api/comment/", {
+                video_id: video_id,
+                text: userInput,
+                likes: 0,
+                dislikes: 0
+            },
+            {headers: {
+                Authorization: "Bearer " + token,
+            }});     
+     }
 
     return (
         <div className="videoPageContent">
@@ -57,6 +69,16 @@ const VideoPage = (props) => {
                         );
                     })}
                 </div>
+                <div className="createComment">
+                    {user ? (
+                        <form onSubmit={handleSubmit}>
+                            <input type={"textarea"} value={userInput} onChange={(event) => setUserInput(event.target.value)}></input>
+                            <button type="submit">Submit</button>
+                        </form>
+                    ) : (
+                        <h5>Must be logged in to comment.</h5>
+                    )}
+                </div>
             </div>
             <div className="videoPageRight">
                 {relatedVideos.map((video) => {
@@ -73,7 +95,7 @@ const VideoPage = (props) => {
             </div>
         </div>
     )
+};
 
-}
 
 export default VideoPage;
