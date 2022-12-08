@@ -1,5 +1,6 @@
 import React from "react";
 import { useEffect, useState } from "react";
+import "./SearchPage.css"
 
 import axios from "axios";
 import { Link, Navigate, useNavigate } from "react-router-dom";
@@ -21,17 +22,19 @@ const SearchPage = (props) => {
     };
 
     return (
-        <div>
-            <form onSubmit={handleSearch}>
-                <input type={"text"} value={userInput} onChange={(event) => setUserInput(event.target.value)} />
-                <button type="submit">Search</button>
-            </form>
+        <div className="searchPage">
+            <div className="searchBox">
+                <form onSubmit={handleSearch}>
+                    <input type={"text"} value={userInput} onChange={(event) => setUserInput(event.target.value)} />
+                    <button type="submit">Search</button>
+                </form>
+            </div>
             <div className="videoResultsDisplay">
                 {videoResults.map((video) => {
                     return (
                         <div className="searchResults">
                             <ul>
-                                <img src={`${video.snippet.thumbnails.default.url}`} onClick={() => handleClick(video)}></img>
+                                <img src={`${video.snippet.thumbnails.medium.url}`} onClick={() => handleClick(video)}></img>
                             </ul>
                             <p>{`${video.snippet.title}`}</p>
                             <br></br>

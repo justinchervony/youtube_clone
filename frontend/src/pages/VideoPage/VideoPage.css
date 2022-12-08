@@ -1,0 +1,51 @@
+.videoPageContent {
+    display: flex;
+    align-content: center;
+    justify-content: space-around;
+}
+
+.videoPageLeft {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.commentsDiv {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.commentSection {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.createComment {
+    display: flex;
+    justify-content: center;
+}
+
+.createComment, input {
+    padding: .3rem;
+    margin: 1rem;
+}
+
+.emptyMiddle {
+    padding: 1rem;
+    padding-right: 2rem;
+}
+
+.videoPageRight {
+    display: flex;
+    flex-direction: column;
+    align-content: flex-end;
+    align-items: flex-end;
+}
+
+.relatedVideoResults {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}

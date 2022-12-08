@@ -2,6 +2,7 @@ import React from "react";
 import { useEffect, useState } from "react";
 import useAuth from "../../hooks/useAuth";
 import { Link, Navigate, useParams, useNavigate } from "react-router-dom";
+import './VideoPage.css'
 
 import axios from "axios";
 
@@ -59,33 +60,40 @@ const VideoPage = (props) => {
                     src={`https://www.youtube.com/embed/${video_id}`}
                     frameBorder="0"></iframe>
                 </div>
-                <div className="commentSection">
-                    {comments.map((comment) => {
-                        return (
-                            <ul>
-                                {comment.user.username}: {comment.text}
-                            </ul>
-
-                        );
-                    })}
-                </div>
-                <div className="createComment">
-                    {user ? (
-                        <form onSubmit={handleSubmit}>
-                            <input type={"textarea"} value={userInput} onChange={(event) => setUserInput(event.target.value)}></input>
-                            <button type="submit">Submit</button>
-                        </form>
-                    ) : (
-                        <h5>Must be logged in to comment.</h5>
-                    )}
+                <div className="commentsDiv">
+                    <div className="createComment">
+                        {user ? (
+                            <form onSubmit={handleSubmit}>
+                                <input type={"textarea"} value={userInput} onChange={(event) => setUserInput(event.target.value)}></input>
+                                <button type="submit">Submit</button>
+                            </form>
+                        ) : (
+                            <h5>Must be logged in to comment.</h5>
+                        )}
+                    </div>
+                    <br></br>
+                    <div className="commentSection">
+                        {comments.map((comment) => {
+                            return (
+                                <ul>
+                                    <strong>{comment.user.username}: &nbsp;</strong> {comment.text}
+                                </ul>
+                            );
+                        })}
+                    </div>
                 </div>
             </div>
+            <div className="emptyMiddle">
+                <br></br>
+            </div>
             <div className="videoPageRight">
+                <h3>Related Videos: </h3>
+                <br></br>
                 {relatedVideos.map((video) => {
                         return (
                             <div className="relatedVideoResults">
                                 <ul>
-                                    <img src={`${video.snippet.thumbnails.default.url}`} onClick={() => handleClick(video)}></img>
+                                    <img src={`${video.snippet.thumbnails.medium.url}`} width='240px' height='120px' onClick={() => handleClick(video)}></img>
                                 </ul>
                                 <p>{`${video.snippet.title}`}</p>
                                 <br></br>
